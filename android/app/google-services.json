@@ -1,0 +1,62 @@
+{
+  "project_info": {
+    "project_number": "157055486823",
+    "project_id": "seoudi-app",
+    "storage_bucket": "seoudi-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157055486823:android:0e0fa0559e74619ffa3dc2",
+        "android_client_info": {
+          "package_name": "com.seoudi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "157055486823-633nflgoo2disr7l3mcp1mut71ij5a0a.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seoudi",
+            "certificate_hash": "037b735fcee7e2a860308a6ab95ec0d33f64083f"
+          }
+        },
+        {
+          "client_id": "157055486823-rerqcjh9vnqjghemnvqrbbrkkejhsj4g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.seoudi",
+            "certificate_hash": "d8ffdea2ff2382dd03be5c8ee20a0778f89d9f83"
+          }
+        },
+        {
+          "client_id": "157055486823-a0mjfjfhkscpugt9ni18p2ugtmviemsg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdwr5m65Cnkjq2ixpMDkwu9X6CeWwpikw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "157055486823-6mpmiakd471f9qpfnrg4qmmh8vgsvr5l.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "157055486823-gufh6ckp4bf9t60as0h1tppqijcfjvpp.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.seoudi"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
