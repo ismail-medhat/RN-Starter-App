@@ -4,7 +4,7 @@
     "baseUrl": "./src",
     "paths": {
       "*": ["*"],
-      "tests": ["tests/*"],
+      "@tests": ["tests/*"],
       "@components": ["components", "components/*"],
       "@screens": ["screens", "screens/*"],
       "@assets": ["assets", "assets/*"],

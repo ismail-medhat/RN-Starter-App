@@ -1,55 +1,22 @@
-import {useEffect, useState} from 'react';
-import {Platform, PermissionsAndroid, Alert} from 'react-native';
-import {RNCamera, TakePictureOptions} from 'react-native-camera';
+import { useState } from "react";
+import { Alert } from "react-native";
+import { RNCamera, TakePictureOptions } from "react-native-camera";
+import useCameraPermission from "./useCameraPermission";
 
 export interface CameraResult {
   uri: string;
 }
 
 const useCamera = () => {
-  const [cameraPermission, setCameraPermission] = useState<boolean | null>(
-    null,
-  );
   const [isTakingPicture, setIsTakingPicture] = useState(false);
   const [cameraRef, setCameraRef] = useState<RNCamera | null>(null);
-
-  useEffect(() => {
-    // Check for camera permission on mount (only for Android)
-    if (Platform.OS === 'android') {
-      requestCameraPermission();
-    } else {
-      setCameraPermission(true);
-    }
-  }, []);
-
-  const requestCameraPermission = async () => {
-    try {
-      const granted = await PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.CAMERA,
-        {
-          title: 'Camera Permission',
-          message: 'App needs access to your camera to take pictures.',
-          buttonNeutral: 'Ask Me Later',
-          buttonNegative: 'Cancel',
-          buttonPositive: 'OK',
-        },
-      );
-
-      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-        setCameraPermission(true);
-      } else {
-        setCameraPermission(false);
-      }
-    } catch (err) {
-      console.warn('Error requesting camera permission:', err);
-    }
-  };
+  const { cameraGranted } = useCameraPermission();
 
   const takePicture = async (): Promise<CameraResult | null> => {
-    if (!cameraPermission) {
+    if (!cameraGranted) {
       Alert.alert(
-        'Permission Required',
-        'You need to grant camera permission to take pictures.',
+        "Permission Required",
+        "You need to grant camera permission to take pictures."
       );
       return null;
     }
@@ -69,18 +36,18 @@ const useCamera = () => {
       setIsTakingPicture(false);
 
       if (data?.uri) {
-        return {uri: data.uri};
+        return { uri: data.uri };
       } else {
         return null;
       }
     } catch (error) {
       setIsTakingPicture(false);
-      console.warn('Error taking picture:', error);
+      console.warn("Error taking picture:", error);
       return null;
     }
   };
 
-  return {cameraPermission, cameraRef, takePicture, isTakingPicture};
+  return { cameraGranted, takePicture, isTakingPicture };
 };
 
 export default useCamera;
